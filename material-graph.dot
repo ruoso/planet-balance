@@ -1,0 +1,14 @@
+digraph "materials" {
+ "extraction::iron-ore" [type="industry::refinement"];
+ "resource::planet";
+ "resource::planet" -> "extraction::iron-ore" [type="industry::extraction"];
+ "materials::electric-energy" -> "extraction::iron-ore" [consume="100000000J/1000kg"];
+ "extraction::iron-ore" -> "materials::iron-ore";
+ "extraction::iron-ore" -> "materials::toxic-sludge" [waste="1000l/1000kg"];
+ "metallurgy::carbon-steel-80%" [type="industry::refinement"];
+ "materials::iron-ore" -> "metallurgy::carbon-steel-80%" [composition="80%"];
+ "materials::electric-energy" -> "metallurgy::carbon-steel-80%" [consume="2000000J/1000kg"];
+ "materials::carbon-steel-80%" [type="metal::alloys"];
+ "metallurgy::carbon-steel-80%" -> "materials::carbon-steel-80%";
+ "metallurgy::carbon-steel-80%" -> "energy::heat" [waste="1000000J/1000kg"];
+}
